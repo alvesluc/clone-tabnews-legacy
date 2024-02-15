@@ -1,4 +1,4 @@
-const { add } = require("../models/calculator.js");
+const { add } = require("../../models/calculator.js");
 
 /* 
   This file isn't used on the project itself. But for history purposes I've
