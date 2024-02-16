@@ -1,5 +1,10 @@
 import { Client } from "pg";
 
+/**
+ * Executes a SQL query on the PostgreSQL database.
+ * @param {string|{text: string, values: Array<any>}} queryObject - The SQL query to execute. Can be either a string representing the query or an object with `text` property representing the query text and `values` property representing the parameterized values.
+ * @returns {Promise<object>} A Promise that resolves with the result of the SQL query.
+ */
 async function query(queryObject) {
   const client = new Client({
     host: process.env.POSTGRES_HOST,
@@ -22,6 +27,10 @@ async function query(queryObject) {
   }
 }
 
+/**
+ * Retrieves SSL configuration values for PostgreSQL connection.
+ * @returns {{ ca: string }|boolean} SSL configuration object if `POSTGRES_CA` environment variable is set, otherwise boolean value based on the current environment.
+ */
 function getSSLValues() {
   if (process.env.POSTGRES_CA) {
     return {
